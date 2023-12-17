@@ -2,6 +2,7 @@ const startLong = 59.55321;
 const endLong = 60.113213;
 const startLat = 30.192131;
 const endLat = 30.593123;
+
 const data = [];
 // const data = [];
 
@@ -14,6 +15,7 @@ function createCoordinates() {
 	}
 	getRandomNumber(startLong, endLong);
 	getRandomNumber(startLat, endLat);
+
 	data.push(coor);
 }
 
@@ -36,6 +38,10 @@ ymaps.ready(function () {
 		}
 
 		heatmap = new Heatmap(data);
+		heatmap.options.set('gradient', {
+			0.1: 'lime',
+			0.9: 'red',
+		});
 		heatmap.setMap(map);
 		map.geoObjects.add(heatmap);
 	});
