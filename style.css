@@ -1,0 +1,76 @@
+/* .modal {
+    position: absolute;
+    top: 349px;
+    left: 598px;
+    width: 200px;
+} */
+
+body {
+    font-family: 'TT Firs Neue Trl';
+    height: 100vh;
+    background-color: #FFF8E5;
+}
+
+.container {
+    max-width: 80%;
+    /* height: 80vh; */
+    margin: 0 auto;
+    /* border: 2px solid #bf0702; */
+}
+
+.animate-height {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0;
+    transition: height 0.2s ease;
+    position: absolute;
+    top: 349px;
+    left: 598px;
+    width: 200px;
+    background-color: #bf0702;
+} 
+
+.animate-height.open {
+    height: 150px;
+} 
+
+.modal-inner {
+    width: 90%;
+    height: 83%;
+    background-color: antiquewhite;
+
+}
+
+p {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 700;
+    text-align: center;
+}
+
+#map {
+    border: 5px solid #bf0702;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.close-span {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
+
+.close-span:hover {
+    font-size: 20px;
+}
+
+.amount-delivery {
+    font-size: 22px;
+}
