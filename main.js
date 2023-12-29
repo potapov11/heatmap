@@ -1,4 +1,4 @@
-import { admArray, primArray, kalinArray, vyborArr, vasArray, kirovArray, kolpArray, krasnogvArray, krasnoselArray, kronstArray, kurortArray, moskArray, nevskArray, centrArray, frunzeArray, petrArray, petrodvorcArray, pushkinArray, murArray } from "./help.js";
+import { admArray, primArray, kalinArray, vyborArr, vasArray, kirovArray, kolpArray, krasnogvArray, krasnoselArray, kronstArray, kurortArray, moskArray, nevskArray, centrArray, frunzeArray, petrArray, petrodvorcArray, pushkinArray, murArray, vselArray, lomArray, gatchArray, tosnArray } from "./help.js";
 
 const btn = document.querySelector('button');
 
@@ -87,7 +87,25 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
+		// Стиль линии
+	});
+
+	var myPolygonGatch = new ymaps.Polygon([
+		reverseArr(gatchArray)
+	], {
+		//Свойства
+		hintContent: "Гатчинский район"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 4,
 		// Стиль линии
 	});
 
@@ -105,7 +123,43 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
+		// Стиль линии
+	});
+
+	var myPolygonVsel = new ymaps.Polygon([
+		reverseArr(vselArray)
+	], {
+		//Свойства
+		hintContent: "Всеволожский район"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 4,
+		// Стиль линии
+	});
+
+	var myPolygonLom = new ymaps.Polygon([
+		reverseArr(lomArray)
+	], {
+		//Свойства
+		hintContent: "Ломоносовский р-он"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 4,
 		// Стиль линии
 	});
 
@@ -123,7 +177,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 	});
 
@@ -141,7 +195,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 	});
 
@@ -159,7 +213,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 	});
 
@@ -177,7 +231,25 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
+		// Стиль линии
+	});
+
+	var myPolygonTosno = new ymaps.Polygon([
+		reverseArr(tosnArray)
+	], {
+		//Свойства
+		hintContent: "Тосненский р-он"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 4,
 		// Стиль линии
 	});
 
@@ -195,7 +267,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 	});
 
@@ -215,7 +287,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 	});
 
@@ -233,7 +305,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 		strokeStyle: 'shortdash'
 	});
@@ -252,7 +324,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 		strokeStyle: 'shortdash'
 	});
@@ -271,7 +343,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 		strokeStyle: 'shortdash'
 	});
@@ -290,7 +362,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 		strokeStyle: 'shortdash'
 	});
@@ -311,7 +383,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 		strokeStyle: 'shortdash'
 	});
@@ -330,7 +402,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 	});
 
@@ -348,7 +420,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 	});
 
@@ -366,7 +438,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 	});
 
@@ -384,7 +456,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 	});
 	
@@ -408,7 +480,7 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 	});
 
@@ -427,11 +499,11 @@ ymaps.ready(function () {
 		// Прозрачность (полупрозрачная заливка)
 		opacity: 0.2,
 		// Ширина линии
-		strokeWidth: 2,
+		strokeWidth: 4,
 		// Стиль линии
 	});
 	///////////////////////////////
-	polygoons.push(myPolygonKalinin, myPolygonPrimor, myPolygonVyborg, myPolygonMurino, myPolygonKolpino, myPolygonKirov, myPolygonVasilevskiy, myPolygonkrasnog, myPolygonKrasnosel, myPolygonkronst,myPolygonKurort, myPolygonMosk, myPolygonNevskiy, myPolygonCentr, myPolygonFrunze, myPolygonPetr, myPolygonPetrodvorc, myPolygonPushkin);
+	polygoons.push(myPolygonKalinin, myPolygonPrimor, myPolygonVyborg, myPolygonMurino, myPolygonKolpino, myPolygonKirov, myPolygonVasilevskiy, myPolygonkrasnog, myPolygonKrasnosel, myPolygonkronst,myPolygonKurort, myPolygonMosk, myPolygonNevskiy, myPolygonCentr, myPolygonFrunze, myPolygonPetr, myPolygonPetrodvorc, myPolygonPushkin, myPolygonVsel, myPolygonLom, myPolygonGatch, myPolygonTosno);
 	console.log(polygoons)
 
 	polygoons.forEach(polygon => { 
@@ -475,6 +547,10 @@ ymaps.ready(function () {
 	map.geoObjects.add(myPolygonPetr);
 	map.geoObjects.add(myPolygonPetrodvorc);
 	map.geoObjects.add(myPolygonPushkin);
+	map.geoObjects.add(myPolygonVsel);
+	map.geoObjects.add(myPolygonLom);
+	map.geoObjects.add(myPolygonGatch);
+	map.geoObjects.add(myPolygonTosno);
 	console.log(map)
 	console.log(map.geoObjects)
 	/////////////////////////////
