@@ -74,3 +74,40 @@ p {
 .amount-delivery {
     font-size: 22px;
 }
+
+button {
+    min-width: 250px;
+    background-color: #bf0702;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    color: wheat;
+    font-size: 16px;
+    font-family: sans-serif;
+    /* position: absolute;
+    top: 25px;
+    right: 140px; */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #94120e;
+}
+
+h2 {
+    margin-bottom: 40px;
+    margin-top: 23px;
+}
+
+.top-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+} */

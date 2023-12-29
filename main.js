@@ -1,4 +1,6 @@
-import { admArray, primArray, kalinArray, vyborArr, vasArray, kirovArray, kolpArray } from "./help.js";
+import { admArray, primArray, kalinArray, vyborArr, vasArray, kirovArray, kolpArray, krasnogvArray, krasnoselArray, kronstArray, kurortArray, moskArray, nevskArray, centrArray, frunzeArray, petrArray, petrodvorcArray, pushkinArray, murArray } from "./help.js";
+
+const btn = document.querySelector('button');
 
 const startLong = 59.55321;
 const endLong = 60.113213;
@@ -53,15 +55,21 @@ function createCoordinates() {
 	};
 
 	data.features.push(obj);
-
-	console.log(data);
 }
+
+console.log(btn);
+
 
 ymaps.ready(function () {
 	var map = new ymaps.Map('map', {
 		center: [59.9386, 30.3141],
+		// controls: [],
 		zoom: 10,
-		controls: [],
+		controls: ['zoomControl'],
+		
+	}, {
+		minZoom: 9,
+		maxZoom: 12
 	});
 
 	//Полигоны/////////////////////////////
@@ -77,7 +85,115 @@ ymaps.ready(function () {
 		// Цвет границ (синий)
 		strokeColor: '#0000FF',
 		// Прозрачность (полупрозрачная заливка)
-		opacity: 0.4,
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 2,
+		// Стиль линии
+	});
+
+	var myPolygonkronst = new ymaps.Polygon([
+		reverseArr(kronstArray)
+	], {
+		//Свойства
+		hintContent: "Кронштадский район"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 2,
+		// Стиль линии
+	});
+
+	var myPolygonPushkin = new ymaps.Polygon([
+		reverseArr(pushkinArray)
+	], {
+		//Свойства
+		hintContent: "Пушкинский р-он"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 2,
+		// Стиль линии
+	});
+
+	var myPolygonPetr = new ymaps.Polygon([
+		reverseArr(petrArray)
+	], {
+		//Свойства
+		hintContent: "Петроградский р-он"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 2,
+		// Стиль линии
+	});
+
+	var myPolygonCentr = new ymaps.Polygon([
+		reverseArr(centrArray)
+	], {
+		//Свойства
+		hintContent: "Центральный район"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 2,
+		// Стиль линии
+	});
+
+	var myPolygonNevskiy = new ymaps.Polygon([
+		reverseArr(nevskArray)
+	], {
+		//Свойства
+		hintContent: "Невский р-он"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 2,
+		// Стиль линии
+	});
+
+	var myPolygonkrasnog = new ymaps.Polygon([
+		reverseArr(krasnogvArray)
+	], {
+		//Свойства
+		hintContent: "Красногвардейский район"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
 		// Ширина линии
 		strokeWidth: 2,
 		// Стиль линии
@@ -89,7 +205,7 @@ ymaps.ready(function () {
 		reverseArr(admArray)
 	], {
 		//Свойства
-		hintContent: "Калининский район"
+		hintContent: "Адмиралтейский район"
 	}, {
 		// Опции.
 		// Цвет заливки (красный)
@@ -97,7 +213,7 @@ ymaps.ready(function () {
 		// Цвет границ (синий)
 		strokeColor: '#0000FF',
 		// Прозрачность (полупрозрачная заливка)
-		opacity: 0.4,
+		opacity: 0.2,
 		// Ширина линии
 		strokeWidth: 2,
 		// Стиль линии
@@ -115,7 +231,45 @@ ymaps.ready(function () {
 		// Цвет границ (синий)
 		strokeColor: '#0000FF',
 		// Прозрачность (полупрозрачная заливка)
-		opacity: 0.4,
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 2,
+		// Стиль линии
+		strokeStyle: 'shortdash'
+	});
+
+	var myPolygonMosk = new ymaps.Polygon([
+		reverseArr(moskArray),
+	], {
+		//Свойства
+		hintContent: "Московский р-он"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 2,
+		// Стиль линии
+		strokeStyle: 'shortdash'
+	});
+
+	var myPolygonPetrodvorc = new ymaps.Polygon([
+		reverseArr(petrodvorcArray),
+	], {
+		//Свойства
+		hintContent: "Петродворцовый р-он"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
 		// Ширина линии
 		strokeWidth: 2,
 		// Стиль линии
@@ -134,31 +288,18 @@ ymaps.ready(function () {
 		// Цвет границ (синий)
 		strokeColor: '#0000FF',
 		// Прозрачность (полупрозрачная заливка)
-		opacity: 0.4,
+		opacity: 0.2,
 		// Ширина линии
 		strokeWidth: 2,
 		// Стиль линии
 		strokeStyle: 'shortdash'
 	});
 
-	var myPolygonMurino = new ymaps.Polygon([[
+	var myPolygonMurino = new ymaps.Polygon([
+		reverseArr(murArray),
 		// Координаты вершин внешней границы многоугольника.
-		[60.07976,30.42217],
-		[60.06862,30.45650],
-		[60.06940,30.46062],
-		[60.05937,30.46783],
-		[60.05465,30.46200],
-		[60.04925,30.45959],
-		[60.05174,30.48466],
-		[60.05988,30.49547],
-		[60.05851,30.50079],
-		[60.03189,30.50036],
-		[60.03450,30.49762],
-		[60.03356,30.46354],
-		[60.04008,30.44277],
-		[60.04094,30.43728],
-		[60.04608,30.41548],
-	]], {
+		
+	], {
 		//Свойства
 		hintContent: "Мурино"
 	}, {
@@ -168,7 +309,7 @@ ymaps.ready(function () {
 		// Цвет границ (синий)
 		strokeColor: '#0000FF',
 		// Прозрачность (полупрозрачная заливка)
-		opacity: 0.4,
+		opacity: 0.2,
 		// Ширина линии
 		strokeWidth: 2,
 		// Стиль линии
@@ -187,7 +328,25 @@ ymaps.ready(function () {
 		// Цвет границ (синий)
 		strokeColor: '#0000FF',
 		// Прозрачность (полупрозрачная заливка)
-		opacity: 0.4,
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 2,
+		// Стиль линии
+	});
+
+	var myPolygonKurort = new ymaps.Polygon(
+		[reverseArr(kurortArray)]
+		, {
+		//Свойства
+		hintContent: "Курортный р-он"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
 		// Ширина линии
 		strokeWidth: 2,
 		// Стиль линии
@@ -205,7 +364,7 @@ ymaps.ready(function () {
 		// Цвет границ (синий)
 		strokeColor: '#0000FF',
 		// Прозрачность (полупрозрачная заливка)
-		opacity: 0.4,
+		opacity: 0.2,
 		// Ширина линии
 		strokeWidth: 2,
 		// Стиль линии
@@ -223,13 +382,56 @@ ymaps.ready(function () {
 		// Цвет границ (синий)
 		strokeColor: '#0000FF',
 		// Прозрачность (полупрозрачная заливка)
-		opacity: 0.4,
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 2,
+		// Стиль линии
+	});
+	
+	// btn.addEventListener('click', () => {
+	// 	console.log('button');
+	// 	heatmap.options.set('opacity', 0);
+	// })
+	// console.log(btn);
+
+	var myPolygonKrasnosel = new ymaps.Polygon(
+		[reverseArr(krasnoselArray)]
+		, {
+		//Свойства
+		hintContent: "Красносельский р-он"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
+		// Ширина линии
+		strokeWidth: 2,
+		// Стиль линии
+	});
+
+	console.log(frunzeArray)
+	var myPolygonFrunze = new ymaps.Polygon(
+		[reverseArr(frunzeArray)]
+		, {
+		//Свойства
+		hintContent: "Фрунзенский р-он"
+	}, {
+		// Опции.
+		// Цвет заливки (красный)
+		fillColor: '#FF0000',
+		// Цвет границ (синий)
+		strokeColor: '#0000FF',
+		// Прозрачность (полупрозрачная заливка)
+		opacity: 0.2,
 		// Ширина линии
 		strokeWidth: 2,
 		// Стиль линии
 	});
 	///////////////////////////////
-	polygoons.push(myPolygonKalinin, myPolygonPrimor, myPolygonVyborg, myPolygonMurino, myPolygonKolpino, myPolygonKirov, myPolygonVasilevskiy);
+	polygoons.push(myPolygonKalinin, myPolygonPrimor, myPolygonVyborg, myPolygonMurino, myPolygonKolpino, myPolygonKirov, myPolygonVasilevskiy, myPolygonkrasnog, myPolygonKrasnosel, myPolygonkronst,myPolygonKurort, myPolygonMosk, myPolygonNevskiy, myPolygonCentr, myPolygonFrunze, myPolygonPetr, myPolygonPetrodvorc, myPolygonPushkin);
 	console.log(polygoons)
 
 	polygoons.forEach(polygon => { 
@@ -261,6 +463,18 @@ ymaps.ready(function () {
 	map.geoObjects.add(myPolygonVasilevskiy);
 	map.geoObjects.add(myPolygonKirov);
 	map.geoObjects.add(myPolygonKolpino);
+	map.geoObjects.add(myPolygonkrasnog);
+	map.geoObjects.add(myPolygonKrasnosel);
+	map.geoObjects.add(myPolygonkronst);
+	map.geoObjects.add(myPolygonKurort);
+	map.geoObjects.add(myPolygonMosk);
+	map.geoObjects.add(myPolygonNevskiy);
+	map.geoObjects.add(myPolygonMosk);
+	map.geoObjects.add(myPolygonCentr);
+	map.geoObjects.add(myPolygonFrunze);
+	map.geoObjects.add(myPolygonPetr);
+	map.geoObjects.add(myPolygonPetrodvorc);
+	map.geoObjects.add(myPolygonPushkin);
 	console.log(map)
 	console.log(map.geoObjects)
 	/////////////////////////////
@@ -273,25 +487,46 @@ ymaps.ready(function () {
 		}
 
 		var heatmap = new Heatmap(data);
+
+		console.log(btn)
+		btn.addEventListener('click', (e) => {
+			if(e.target.textContent == 'скрыть тепловую карту') {
+				console.log(e)
+				console.log('button');
+				heatmap.options.set('opacity', 0);
+				e.target.textContent = 'отобразить тепловую карту'
+			} else {
+				heatmap.options.set('opacity',  0.8);
+				e.target.textContent = 'скрыть тепловую карту'
+			}
+		})
+
+		// var MyIconLayout = ymaps.templateLayoutFactory.createClass(
+		// 	'<div style="background-image: url(img/face.png); background-size: cover; width: 30px; height: 30px;"></div>'
+		//   );
+		  
+		  // Задаем макет иконки метки
+		//   heatmap.options.set('iconLayout', MyIconLayout);
+
 		heatmap.options.set('gradient', {
-			0.1: '#F5DEB3',
-			1: '#BF0702',
-		});
+			0.1: '#bf0702',
+			0.5: 'orange',
+			1: 'red'
+		  });
 		console.log(data);
-		heatmap.options.set('opacity', 1);
+		heatmap.options.set('opacity', 0.8);
 		heatmap.options.set({
-			radius: 20,
+			radius: 25,
 		});
 		heatmap.options.set({
-			weight: 100,
+			weight: 500,
 		});
 		
 		heatmap.setMap(map);
 		map.geoObjects.add(heatmap);
-		// map.geoObjects.add(myPolygon);
-		// console.log(myPolygon.geometry.getCoordinates());
 	});
 
+	// })
 	document.addEventListener('click', event => {
 		if(flag == true) {
 			console.log(flag)
@@ -299,10 +534,10 @@ ymaps.ready(function () {
 			console.dir(event)
 			console.log(event.target)
 			if(event.target.nodeName == 'SPAN') {
-				console.log('span')
-				modal.forEach(modal => {
-					modal.remove();
-				})
+
+				// modal.forEach(modal => {
+				// 	modal.remove();
+				// })
 			}
 			else {			
 				if(modal.length > 0) {
@@ -329,11 +564,33 @@ ymaps.ready(function () {
 					<span class='close-span'>X</span>
 					</div>`
 					element.classList.add('open');
+
+					const spans = document.querySelectorAll('.close-span');
+					spans.forEach((spanItem, i) => {
+						spanItem.addEventListener('click', ()=> {
+							console.log(i);
+							// modal.forEach(modal => {
+								const modal = document.querySelectorAll('.modal');
+
+								console.log(modal)
+								modal[0].remove();
+						// })
+							
+		})
+	  })
 				  }, 10);
 			}
 		}
 		flag = false;
 	  });
+
+	//   const spans = document.querySelectorAll('.close-span');
+	//   spans.forEach(spanItem => {
+	// 	spanItem.addEventListener('click', ()=> {
+
+	// 		console.log('spanItem')
+	// 	})
+	//   })
 });
 
 
