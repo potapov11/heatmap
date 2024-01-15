@@ -1,11 +1,43 @@
-// import dataCoords from './data-bitrix.js'
-
-// console.log(dataCoords, '...data');
-
-
 import { admArray, primArray, kalinArray, vyborArr, vasArray, kirovArray, kolpArray, krasnogvArray, krasnoselArray, kronstArray, kurortArray, moskArray, nevskArray, centrArray, frunzeArray, petrArray, petrodvorcArray, pushkinArray, murArray, vselArray, lomArray, gatchArray, tosnArray } from "./help.js";
 
+
+
 function renderShowHeatMap() {
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+    
+        fetch(deliveryGetUrl, requestOptions)
+        // .then(response => response.text())
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+            
+            const resultFetchArray = result.result.list;
+            console.log(resultFetchArray);
+            
+            ymaps.ready(function () {
+                var map = new ymaps.Map(deliveryMap, {
+                    center: [59.9386, 30.3141],
+                    zoom: 10,
+                    controls: ['zoomControl'],
+                    minZoom: 9,
+                    maxZoom: 12
+                });
+    
+                resultFetchArray.forEach(item => {
+                    // const coords = item.coords.split(',');
+                    const placemark = new ymaps.Placemark(item.coords, {
+                        hintContent: item.name,
+                        balloonContent: item.address
+                    });
+                    map.geoObjects.add(placemark);
+                });
+            })
+        })
+
+
     const btn = document.querySelector('button');
 
 const startLong = 59.55321;
@@ -37,17 +69,8 @@ let hintContent;
 let flag = false;
 
 
-
 function createCoordinates() {
 	const coor = [];
-	function getRandomNumber(min, max) {
-		let res = Math.random() * (max - min) + min;
-		const fixedNum = res.toFixed(4);
-		coor.push(Number(fixedNum));
-		// console.log(coor);
-	}
-	getRandomNumber(startLong, endLong);
-	getRandomNumber(startLat, endLat);
 
 	let obj = {
 		id: 'id2',
@@ -564,11 +587,11 @@ ymaps.ready(function () {
 
 	ymaps.modules.require(['Heatmap'], function (Heatmap) {
 		// Расскоментировать для отрисовки меток тепловой карты
-		for (let i = 0; i < 400; i++) {
+		for (let i = 0; i < 50; i++) {
 			createCoordinates();
 			// console.log(data);
 		}
-
+        console.log(data, '...heatmap-data');
 		var heatmap = new Heatmap(data);
 
 		console.log(btn)
