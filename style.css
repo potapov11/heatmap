@@ -50,10 +50,16 @@ p {
     text-align: center;
 }
 
-#map {
+#map, #map-delivery {
+    width: 100%;
+	height: 800px;
     border: 5px solid #bf0702;
     border-radius: 10px;
     overflow: hidden;
+}
+
+#map {
+    margin-bottom: 20px;
 }
 
 .close-span {

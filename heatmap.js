@@ -2,9 +2,11 @@
 
 // console.log(dataCoords, '...data');
 
+
 import { admArray, primArray, kalinArray, vyborArr, vasArray, kirovArray, kolpArray, krasnogvArray, krasnoselArray, kronstArray, kurortArray, moskArray, nevskArray, centrArray, frunzeArray, petrArray, petrodvorcArray, pushkinArray, murArray, vselArray, lomArray, gatchArray, tosnArray } from "./help.js";
 
-const btn = document.querySelector('button');
+function renderShowHeatMap() {
+    const btn = document.querySelector('button');
 
 const startLong = 59.55321;
 const endLong = 60.113213;
@@ -665,5 +667,6 @@ ymaps.ready(function () {
 		flag = false;
 	  });
 });
+}
 
-
+export {renderShowHeatMap}

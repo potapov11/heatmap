@@ -4890,4 +4890,4 @@ const data = {
 console.log(data);
 console.log(data.result);
 
-export default data;
+// export default data;
