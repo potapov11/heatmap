@@ -39,10 +39,10 @@ function renderShowHeatMap() {
     // .then(response => response.text())
     .then((response) => response.json())
     .then((result) => {
-      console.log(result);
+      // console.log(result);
 
       const resultFetchArray = result.result.list;
-      console.log(resultFetchArray);
+      // console.log(resultFetchArray);
 
       const polygoons = [];
 
@@ -69,7 +69,7 @@ function renderShowHeatMap() {
             weight: 30,
           },
         };
-        console.log(obj);
+        // console.log(obj);
         data.features.push(obj);
       });
 
@@ -84,7 +84,7 @@ function renderShowHeatMap() {
         return arrReverse;
       };
 
-      console.log(btn);
+      // console.log(btn);
 
       ymaps.ready(function () {
         var map = new ymaps.Map(
@@ -96,8 +96,8 @@ function renderShowHeatMap() {
             controls: ["zoomControl"],
           },
           {
-            minZoom: 9,
-            maxZoom: 12,
+            minZoom: 8,
+            maxZoom: 13,
           }
         );
 
@@ -604,15 +604,15 @@ function renderShowHeatMap() {
           myPolygonGatch,
           myPolygonTosno
         );
-        console.log(polygoons);
+        // console.log(polygoons);
 
         polygoons.forEach((polygon) => {
           polygon.events.add("click", (event) => {
             points = [];
             console.log("polygon clicked");
             flag = true;
-            console.log(polygon);
-            console.log(flag);
+            // console.log(polygon);
+            // console.log(flag);
             hintContent = "";
             hintContent = polygon.properties.get("hintContent");
             data.features.forEach((feature) => {
@@ -650,19 +650,19 @@ function renderShowHeatMap() {
         map.geoObjects.add(myPolygonLom);
         map.geoObjects.add(myPolygonGatch);
         map.geoObjects.add(myPolygonTosno);
-        console.log(map);
-        console.log(map.geoObjects);
+        // console.log(map);
+        // console.log(map.geoObjects);
         /////////////////////////////
 
         ymaps.modules.require(["Heatmap"], function (Heatmap) {
-          console.log(data, "...heatmap-data");
+          // console.log(data, "...heatmap-data");
           var heatmap = new Heatmap(data);
 
-          console.log(btn);
+          // console.log(btn);
           btn.addEventListener("click", (e) => {
             if (e.target.textContent == "скрыть тепловую карту") {
-              console.log(e);
-              console.log("button");
+              // console.log(e);
+              // console.log("button");
               heatmap.options.set("opacity", 0);
               e.target.textContent = "отобразить тепловую карту";
             } else {
@@ -676,7 +676,7 @@ function renderShowHeatMap() {
             0.5: "orange",
             1: "red",
           });
-          console.log(data);
+          // console.log(data);
           heatmap.options.set("opacity", 0.8);
           heatmap.options.set({
             radius: 25,
@@ -692,10 +692,10 @@ function renderShowHeatMap() {
         // })
         document.addEventListener("click", (event) => {
           if (flag == true) {
-            console.log(flag);
+            // console.log(flag);
             const modal = document.querySelectorAll(".modal");
-            console.dir(event);
-            console.log(event.target);
+            // console.dir(event);
+            // console.log(event.target);
             if (event.target.nodeName == "SPAN") {
             } else {
               if (modal.length > 0) {
@@ -713,7 +713,7 @@ function renderShowHeatMap() {
               element.classList.add("animate-height");
 
               document.body.appendChild(element);
-              console.log(element);
+              // console.log(element);
 
               setTimeout(() => {
                 element.innerHTML = `
@@ -726,11 +726,11 @@ function renderShowHeatMap() {
                 const spans = document.querySelectorAll(".close-span");
                 spans.forEach((spanItem, i) => {
                   spanItem.addEventListener("click", () => {
-                    console.log(i);
+                    // console.log(i);
                     // modal.forEach(modal => {
                     const modal = document.querySelectorAll(".modal");
 
-                    console.log(modal);
+                    // console.log(modal);
                     modal[0].remove();
                     // })
                   });
