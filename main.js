@@ -1,4 +1,7 @@
 import { admArray, primArray, kalinArray, vyborArr, vasArray, kirovArray, kolpArray, krasnogvArray, krasnoselArray, kronstArray, kurortArray, moskArray, nevskArray, centrArray, frunzeArray, petrArray, petrodvorcArray, pushkinArray, murArray, vselArray, lomArray, gatchArray, tosnArray } from "./help.js";
+import dataCoords from './data-bitrix.js'
+
+console.log(dataCoords, '...data');
 
 const btn = document.querySelector('button');
 
@@ -38,6 +41,7 @@ function createCoordinates() {
 		let res = Math.random() * (max - min) + min;
 		const fixedNum = res.toFixed(4);
 		coor.push(Number(fixedNum));
+		// console.log(coor);
 	}
 	getRandomNumber(startLong, endLong);
 	getRandomNumber(startLat, endLat);
@@ -484,7 +488,7 @@ ymaps.ready(function () {
 		// Стиль линии
 	});
 
-	console.log(frunzeArray)
+	// console.log(frunzeArray)
 	var myPolygonFrunze = new ymaps.Polygon(
 		[reverseArr(frunzeArray)]
 		, {
@@ -659,14 +663,6 @@ ymaps.ready(function () {
 		}
 		flag = false;
 	  });
-
-	//   const spans = document.querySelectorAll('.close-span');
-	//   spans.forEach(spanItem => {
-	// 	spanItem.addEventListener('click', ()=> {
-
-	// 		console.log('spanItem')
-	// 	})
-	//   })
 });
 
 
