@@ -1,3 +1,8 @@
+// const canvas = await html2canvas(element);
+//  canvas.getContext("2d", {
+//       willReadFrequently: true,
+//  });
+
 import {
   admArray,
   primArray,
@@ -24,16 +29,46 @@ import {
   tosnArray,
 } from "./help.js";
 
+const heatmapSum = document.querySelector('#heatmap-sum');
 const deliveryGetUrl =
   "https://shop-lk.severnaya.ru/rest/site/api/system/analitics/maps.php?dateStart=01.01.2024&dateEnd=04.01.2024&token=jhsjdfgby7324hbjsdfhyg3478hd6t3";
 
-function renderShowHeatMap() {
+function renderShowHeatMapSum() {
   const btn = document.querySelector("button");
 
   var requestOptions = {
     method: "GET",
     redirect: "follow",
   };
+
+//   background: #000046;  /* fallback for old browsers */
+// background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
+// background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  let gradient1 = {
+    0.1: "#000046",
+    0.5: "#1CB5E0",
+    1: "#1CB5E0"
+  }
+  
+  let gradient2 = {
+    0.1: "#bf0702",
+    0.5: "orange",
+    1: "red"
+  }
+  
+  let gradient3 = {
+    0.1: "#bf0702",
+    0.5: "#bf0702",
+    1: "red"
+  }
+  
+  let gradient4 = {
+    0.1: "#bf0702",
+    0.5: "orange",
+    1: "#bf0702"
+  }
 
   fetch(deliveryGetUrl, requestOptions)
     // .then(response => response.text())
@@ -42,7 +77,7 @@ function renderShowHeatMap() {
       // console.log(result);
 
       const resultFetchArray = result.result.list;
-      // console.log(resultFetchArray);
+      console.log(resultFetchArray);
 
       const polygoons = [];
 
@@ -66,7 +101,7 @@ function renderShowHeatMap() {
             coordinates: item.coords,
           },
           properties: {
-            weight: 20,
+            gradient: item.summ > 500 ? gradient1 : item.summ > 3000 ? gradient2 : item.summ > 1000 ? gradient3 : gradient4,
           },
         };
         // console.log(obj);
@@ -84,11 +119,13 @@ function renderShowHeatMap() {
         return arrReverse;
       };
 
+      console.log(data, '...data');
+
       // console.log(btn);
 
       ymaps.ready(function () {
         var map = new ymaps.Map(
-          "map",
+          heatmapSum,
           {
             center: [59.9386, 30.3141],
             // controls: [],
@@ -671,16 +708,16 @@ function renderShowHeatMap() {
             }
           });
 
-          heatmap.options.set("gradient", {
-            0.1: "#bf0702",
-            0.5: "orange",
-            1: "red",
-          });
-
+          // heatmap.options.set("gradient", {
+          //   0.1: "#bf0702",
+          //   0.5: "orange",
+          //   1: "red",
+          // });
+          
           // console.log(data);
           heatmap.options.set("opacity", 0.8);
           heatmap.options.set({
-            radius: 10,
+            radius: 20,
           });
           heatmap.options.set({
             weight: 300,
@@ -745,4 +782,4 @@ function renderShowHeatMap() {
     });
 }
 
-export { renderShowHeatMap };
+export { renderShowHeatMapSum };

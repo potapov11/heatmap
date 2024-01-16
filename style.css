@@ -50,7 +50,7 @@ p {
     text-align: center;
 }
 
-#map, #map-delivery {
+#map, #map-delivery, #heatmap-sum {
     width: 100%;
 	height: 800px;
     border: 5px solid #bf0702;
