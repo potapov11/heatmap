@@ -1,9 +1,9 @@
 // import dataCoords from './data-bitrix.js';
 
 const deliveryGetUrl =
-  "https://shop-lk.severnaya.ru/rest/site/api/system/analitics/maps.php?dateStart=01.01.2024&dateEnd=04.01.2024&token=jhsjdfgby7324hbjsdfhyg3478hd6t3";
+  "https://shop-lk.severnaya.ru/rest/site/api/system/analitics/maps.php?dateStart=01.01.2024&dateEnd=02.01.2024&token=jhsjdfgby7324hbjsdfhyg3478hd6t3";
 
-// console.log(dataCoords, '...data');
+const dadataKey = "a8672c8309f15fbc796c9b47d8407bf7266a9d2c";
 
 var requestOptions = {
   method: "GET",
@@ -20,9 +20,7 @@ function renderShowDeliveryMap() {
     .then((result) => {
       console.log(result);
 
-      const resultFetchArray = result.result.list;
-      console.log(resultFetchArray);
-      console.log(resultFetchArray.length, "...length");
+      let resultFetchArray = result.result.list;
 
       ymaps.ready(function () {
         var map = new ymaps.Map(
@@ -33,74 +31,12 @@ function renderShowDeliveryMap() {
             controls: ["zoomControl"],
           },
           {
-            minZoom: 8,
+            minZoom: 6,
             maxZoom: 15,
           }
-        );
+        );    
 
-        resultFetchArray.forEach((item) => {
-          //Числовой массив координат
-          const integerCoordsArray = item.coords.map((item) => Number(item));
-
-          ymaps.geocode(integerCoordsArray).then(function (res) {
-            var firstGeoObject = res.geoObjects.get(0);
-
-            console.log(firstGeoObject, "firstgeoobject");
-
-            // const resultObj = {};
-
-            let address = null;
-            let resultObj = {
-              city: "",
-              area: "",
-              secondArea: "",
-              street: "",
-              house: "",
-              block: "",
-            };
-            let result = [];
-
-            // /** nice format of returned address */
-            if (firstGeoObject) {
-              resultObj.city =
-                firstGeoObject.getLocalities().length > 0
-                  ? firstGeoObject.getLocalities()[0]
-                  : "";
-              resultObj.area =
-                firstGeoObject.getAdministrativeAreas().length > 0
-                  ? firstGeoObject.getAdministrativeAreas()[0]
-                  : "";
-              resultObj.secondArea =
-                firstGeoObject.getAdministrativeAreas().length > 1
-                  ? firstGeoObject.getAdministrativeAreas()[1]
-                  : "";
-              resultObj.street = firstGeoObject.getThoroughfare()
-                ? firstGeoObject.getThoroughfare()
-                : "";
-              resultObj.house = firstGeoObject.getPremiseNumber()
-                ? firstGeoObject.getPremiseNumber()
-                : "";
-              // resultObj.coords = coords;
-              resultObj.block = "";
-
-              if (resultObj.house) {
-                result = [
-                  resultObj.area,
-                  resultObj.city,
-                  resultObj.street,
-                  resultObj.house,
-                  resultObj.block,
-                ];
-                result = [...new Set(result.filter(Boolean))];
-                address = result.join(", ");
-
-                console.log(address, "адрес");
-              }
-            }
-            console.log("Yandex geocode try");
-
-            /** or just uncomment next line */
-          });
+        resultFetchArray.forEach(item => {
           const placemark = new ymaps.Placemark(
             item.coords,
             {
@@ -108,14 +44,16 @@ function renderShowDeliveryMap() {
               balloonContent: item.address,
             },
             {
-              iconColor: "#BF0702",
+              iconColor: item.is_valid ? '#34c924' : '#BF0702',
+              // iconColor: "#BF0702",
             }
           );
           map.geoObjects.add(placemark);
-        });
+        })
+
       });
-    })
-    .catch((error) => console.log("error", error));
+      });
+    // .catch((error) => console.log("error", error))
 }
 
 export { renderShowDeliveryMap, deliveryGetUrl };

@@ -81,8 +81,13 @@ p {
     font-size: 22px;
 }
 
+select {
+    padding: 5px 10px;
+}
+
 button {
     min-width: 250px;
+    margin-bottom: 20px;
     background-color: #bf0702;
     border: none;
     border-radius: 5px;
@@ -123,3 +128,7 @@ h2 {
     left: 50%;
     transform: translate(-50%, 0);
 } */
+
+.hide {
+    display: none;
+}
