@@ -650,8 +650,8 @@ function renderShowHeatMap() {
         map.geoObjects.add(myPolygonLom);
         map.geoObjects.add(myPolygonGatch);
         map.geoObjects.add(myPolygonTosno);
-        console.log(map);
-        console.log(map.geoObjects);
+        // console.log(map);
+        // console.log(map.geoObjects);
         /////////////////////////////
 
         ymaps.modules.require(["Heatmap"], function (Heatmap) {
